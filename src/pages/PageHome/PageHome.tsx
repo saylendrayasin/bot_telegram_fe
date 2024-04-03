@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
-import Button from './Components/Button/Button';
-import Coin from './Assets/coin.png';
+import './PageHome.css';
+import Button from '../../Components/Button/Button';
+import Coin from '../../assets/coin.png';
 import { TbCoinFilled } from 'react-icons/tb';
+import { useParams } from 'react-router-dom';
 
 //@ts-ignore
 const telegram = window.Telegram.WebApp;
 
-function App() {
+function PageHome() {
+  const { id } = useParams();
   const [count, setCount] = useState(0);
+
+  console.log('ID', id);
 
   function handleAdd() {
     setCount(count + 1);
@@ -20,9 +24,9 @@ function App() {
   }, []);
 
   return (
-    <div className="outer">
-      <div className="wrapper">
-        <div className="content">
+    <div className="outer-home">
+      <div className="wrapper-home">
+        <div className="content-home">
           <div className="coin__count">
             <TbCoinFilled className="cc__icon" />
             <p className="cc__text">{count}</p>
@@ -35,4 +39,4 @@ function App() {
   );
 }
 
-export default App;
+export default PageHome;
