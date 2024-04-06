@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './PageHome.css';
 import Button from '../../Components/Button/Button';
-import Coin from '../../assets/coin.png';
+import Coin from '../../Assets/coin.png';
 import { TbCoinFilled } from 'react-icons/tb';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -48,11 +48,9 @@ function PageHome() {
   }
 
   async function handleAdd() {
-    // Tambahkan koin secara lokal
     const updatedCount = count + 1;
     setCount(updatedCount);
 
-    // Panggil fungsi untuk memperbarui data di database
     await updateUser(updatedCount);
   }
 
