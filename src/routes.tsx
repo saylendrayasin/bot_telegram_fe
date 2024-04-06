@@ -4,7 +4,7 @@ import PageHome from './pages/PageHome/PageHome';
 
 export const router = createBrowserRouter([
   {
-    path: '/:id',
+    path: '/',
     element: <PageLanding />,
   },
   {
