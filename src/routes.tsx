@@ -4,11 +4,11 @@ import PageHome from './pages/PageHome/PageHome';
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/:id',
     element: <PageLanding />,
   },
   {
-    path: '/:id',
+    path: '/home/:id',
     element: <PageHome />,
   },
 ]);
