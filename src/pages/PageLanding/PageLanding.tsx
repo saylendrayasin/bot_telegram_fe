@@ -1,17 +1,19 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import './PageLanding.css';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom'; // Menggunakan useLocation
 import axios from 'axios';
 
 function PageLanding() {
-  const { id } = useParams();
-  const [userExist, setUserExist] = useState(false);
   const navigate = useNavigate();
+  const [userExist, setUserExist] = useState(false);
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get('id');
 
-  async function fetchUser() {
+  console.log(id);
+
+  async function fetchUser(ids: string) {
     try {
-      const response = await axios.get(`http://localhost:5000/api/user/${id}`);
+      const response = await axios.get(`http://localhost:5000/api/user/${ids}`);
 
       console.log(response.data);
 
@@ -41,8 +43,11 @@ function PageLanding() {
   }
 
   useEffect(() => {
-    fetchUser();
-  }, []);
+    if (id) {
+      fetchUser(id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   return (
     <div className="outer">
